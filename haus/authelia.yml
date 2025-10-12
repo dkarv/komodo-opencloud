@@ -1,0 +1,28 @@
+---
+services:
+  opencloud:
+    environment:
+      IDP_DOMAIN: "auth.punzet.me"
+      OC_OIDC_ISSUER: "https://auth.punzet.me"
+      # the client id set in your authenlia config 
+      WEB_OIDC_CLIENT_ID: "opencloud-web-id"
+
+      # disable the builtin identity provider 
+      OC_EXCLUDE_RUN_SERVICES: "idp"
+
+      # enable opaque access tokens
+      PROXY_OIDC_ACCESS_TOKEN_VERIFY_METHOD: "none"
+      PROXY_OIDC_SKIP_VERIFICATION: "false"
+
+      # Enable authelia usernames as username in OpenCloud (instead of an id)
+      PROXY_USER_OIDC_CLAIM: "preferred_username"
+      PROXY_AUTOPROVISION_CLAIM_USERNAME: "preferred_username"
+
+      PROXY_OIDC_REWRITE_WELLKNOWN: "true"
+      PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: "groups"
+      WEB_OIDC_SCOPE: "openid profile email groups"
+      # enables autoprovision for new users
+      PROXY_AUTOPROVISION_ACCOUNTS: "true"
+      PROXY_ROLE_ASSIGNMENT_DRIVER: "oidc"
+      GRAPH_ASSIGN_DEFAULT_USER_ROLE: "true"
+      GRAPH_USERNAME_MATCH: "none"
