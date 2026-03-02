@@ -49,6 +49,10 @@ services:
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.${TRAEFIK_SERVICES_TLS_CONFIG}"
       - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.middlewares.hsts-header.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.hsts-header.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.hsts-header.headers.stsPreload=true"
+      - "traefik.http.middlewares.hsts-header.headers.forceSTSHeader=true"
     logging:
       driver: ${LOG_DRIVER:-local}
     restart: always
