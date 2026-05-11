@@ -7,8 +7,8 @@ services:
       PROXY_OIDC_SKIP_VERIFICATION: "false"
 
       # Enable authelia usernames as username in OpenCloud (instead of an id)
-      # PROXY_USER_OIDC_CLAIM: "preferred_username"
-      # PROXY_AUTOPROVISION_CLAIM_USERNAME: "preferred_username"
+      PROXY_USER_OIDC_CLAIM: "preferred_username"
+      PROXY_AUTOPROVISION_CLAIM_USERNAME: "preferred_username"
 
       PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: "groups"
       WEB_OIDC_SCOPE: "openid profile email groups"
@@ -32,5 +32,5 @@ services:
       # 5. Login with your admin user (the one with the `opencloud-admin` group)
       # 6. Switch back to `PROXY_ROLE_ASSIGNMENT_DRIVER: "default"``
       # 7. Recreate opencloud container: `docker compose up -d opencloud`
-      PROXY_ROLE_ASSIGNMENT_DRIVER: "default"
+      PROXY_ROLE_ASSIGNMENT_DRIVER: "oidc"
       GRAPH_ASSIGN_DEFAULT_USER_ROLE: "true"
