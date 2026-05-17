@@ -66,6 +66,8 @@ services:
     logging:
       driver: ${LOG_DRIVER:-local}
     restart: always
+    extra_hosts:
+      - "cloud.punzet.me:host-gateway"
 
 volumes:
   opencloud-config:
